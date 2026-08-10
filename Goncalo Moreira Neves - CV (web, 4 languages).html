@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gonçalo Moreira Neves · CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14273d; --ink-3:#1d3a56;
+    --brass:#a9843f; --brass-2:#8a6a30;
+    --champ:#efe6d3; --champ-2:#f6efe1;
+    --paper:#fbfaf6; --bg:#ffffff; --shell:#e6e8ec;
+    --slate:#3a4653; --muted:#6b7682; --line:#e9e3d6;
+    --shadow:0 8px 34px rgba(20,39,61,.16);
+    --ctl-bg:rgba(255,255,255,.10); --ctl-br:rgba(169,132,63,.45); --ctl-fg:#e7d9be;
+  }
+  html[data-theme="dark"]{
+    --ink:#eaf0f6; --ink-3:#cfdbe6;
+    --brass:#c9a35c; --brass-2:#dcbd7e;
+    --champ:#1f2d3b; --champ-2:#1a2733;
+    --paper:#141e28; --bg:#101922; --shell:#080d12;
+    --slate:#bfcad5; --muted:#8a97a3; --line:#26374a;
+    --shadow:0 8px 34px rgba(0,0,0,.55);
+    --ctl-bg:rgba(255,255,255,.07); --ctl-br:rgba(201,163,92,.5); --ctl-fg:#e7d9be;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{
+    font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:var(--shell); line-height:1.55; -webkit-font-smoothing:antialiased;
+    transition:background .25s ease;
+  }
+  .page{max-width:1000px; margin:24px auto; background:var(--bg); box-shadow:var(--shadow);
+        border-radius:6px; overflow:hidden; transition:background .25s ease}
+
+  /* ---------- Header ---------- */
+  header{
+    background:linear-gradient(135deg,#1a3350 0%,#14273d 55%,#0e1c2c 100%);
+    color:#fff; padding:34px 40px 28px; border-bottom:3px solid var(--brass); position:relative;
+  }
+  html[data-theme="dark"] header{background:linear-gradient(135deg,#16283d 0%,#101d2c 55%,#0a141e 100%)}
+  .head-top{display:flex; align-items:flex-start; gap:20px}
+  .monogram{
+    flex:none; width:58px; height:58px; border:1.5px solid var(--brass); border-radius:5px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Spectral',Georgia,serif; font-weight:600; font-size:22px; letter-spacing:1px;
+    color:var(--brass); background:rgba(169,132,63,.08);
+  }
+  .head-id{flex:1; min-width:0}
+  header h1{font-family:'Spectral',Georgia,serif; font-size:36px; font-weight:600; letter-spacing:.3px; line-height:1.08}
+  .tagline{margin-top:6px; font-size:15px; color:#cdd7e2; font-style:italic}
+  .role{margin-top:16px; font-size:13px; font-weight:500; color:#e7d9be; letter-spacing:.2px}
+  .role .sep{color:var(--brass); margin:0 6px}
+  .contact{margin-top:15px; display:flex; flex-wrap:wrap; gap:8px 24px; font-size:13px}
+  .contact a{color:#fff; text-decoration:none; border-bottom:1px solid rgba(169,132,63,.6)}
+  .contact a:hover{border-bottom-color:var(--brass)}
+  .contact span{color:#c7d1dd}
+
+  /* ---------- Controls ---------- */
+  .controls{flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:8px}
+  .ctlgroup{display:flex; gap:4px; background:var(--ctl-bg); border:1px solid var(--ctl-br);
+            border-radius:20px; padding:3px}
+  .ctlgroup button{
+    font:inherit; font-size:11.5px; font-weight:600; letter-spacing:.4px;
+    color:var(--ctl-fg); background:transparent; border:0; border-radius:16px;
+    padding:4px 11px; cursor:pointer; transition:background .16s ease, color .16s ease;
+  }
+  .ctlgroup button:hover{background:rgba(169,132,63,.22)}
+  .ctlgroup button[aria-pressed="true"]{background:var(--brass); color:#12202f}
+  .iconbtn{
+    font:inherit; font-size:11.5px; font-weight:600; letter-spacing:.4px; color:var(--ctl-fg);
+    background:var(--ctl-bg); border:1px solid var(--ctl-br); border-radius:20px;
+    padding:6px 13px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+    transition:background .16s ease;
+  }
+  .iconbtn:hover{background:rgba(169,132,63,.22)}
+  .iconbtn svg{width:13px; height:13px; fill:currentColor}
+
+  /* ---------- Layout ---------- */
+  .body{display:grid; grid-template-columns:325px 1fr}
+  aside{background:var(--paper); padding:26px 24px; border-right:1px solid var(--line)}
+  main{padding:26px 32px}
+  aside section, main section{margin-bottom:24px}
+  h2{
+    font-size:12px; text-transform:uppercase; letter-spacing:1.6px; color:var(--ink);
+    font-weight:700; margin:0 0 13px; padding-bottom:6px; border-bottom:2px solid var(--brass);
+  }
+
+  /* ---------- Profile ---------- */
+  .summary{font-size:13.5px; color:var(--slate)}
+  .summary p{margin-bottom:10px}
+  .summary p:first-child::first-letter{
+    font-family:'Spectral',Georgia,serif; font-size:40px; line-height:.9; font-weight:600;
+    color:var(--ink); float:left; margin:4px 9px 0 0;
+  }
+  .summary b{color:var(--ink); font-weight:600}
+
+  /* ---------- Key results ---------- */
+  .wins{display:grid; grid-template-columns:1fr; gap:8px}
+  .win{background:var(--champ-2); border-left:3px solid var(--brass); border-radius:4px; padding:8px 10px}
+  .win b{display:block; color:var(--brass-2); font-size:11.5px; font-weight:700; letter-spacing:.2px; margin-bottom:2px}
+  .win span{font-size:11.5px; color:var(--muted); line-height:1.4}
+
+  /* ---------- Experience ---------- */
+  .job{margin-bottom:18px}
+  .job .top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:2px 12px; align-items:baseline}
+  .job .title{font-size:14.5px; font-weight:700; color:var(--ink)}
+  .job .co{font-weight:600; color:var(--brass-2)}
+  .job .meta{font-size:11.5px; color:var(--muted); white-space:nowrap; font-weight:500}
+  .job .desc{font-size:12.5px; color:var(--muted); font-style:italic; margin:4px 0 8px}
+  .job ul{list-style:none; margin:0}
+  .job li{position:relative; padding-left:16px; font-size:13px; margin-bottom:5px; color:var(--slate)}
+  .job li::before{content:""; position:absolute; left:2px; top:8px; width:5px; height:5px; background:var(--brass); border-radius:50%}
+  .job li b{color:var(--ink); font-weight:600}
+
+  /* ---------- Ventures ---------- */
+  .vent{margin:10px 0 0; padding-left:15px; border-left:2px solid var(--champ)}
+  .vent .vrow{margin-bottom:9px}
+  .vent .vtitle{font-size:13px; font-weight:700; color:var(--ink)}
+  .vent .vtitle .co2{color:var(--brass-2)}
+  .vent .vmeta{font-size:11px; color:var(--muted); font-weight:400}
+  .vent .vdesc{font-size:12.5px; color:var(--slate); margin-top:1px}
+  .vent .vdesc b{color:var(--ink); font-weight:600}
+
+  /* ---------- Skills ---------- */
+  .skillgroup{margin-bottom:14px}
+  .skillgroup h3{font-size:11.5px; color:var(--brass-2); font-weight:700; margin-bottom:6px; letter-spacing:.2px}
+  .chips{display:flex; flex-wrap:wrap; gap:6px}
+  .chips span{background:var(--champ); color:var(--ink-3); font-size:11.5px; padding:4px 9px; border-radius:20px}
+
+  /* ---------- Sidebar lists ---------- */
+  .edu{font-size:12.5px; margin-bottom:11px; color:var(--slate)}
+  .edu b{display:block; color:var(--ink)}
+  .edu span{display:block; color:var(--muted); font-size:11.5px}
+  .pub{padding-left:15px; position:relative; font-size:12.5px; margin-bottom:11px; color:var(--slate)}
+  .pub b{color:var(--ink)}
+  .pub span{display:block; color:var(--muted); font-size:11.5px; margin-top:1px}
+  .pub::before{content:""; position:absolute; left:0; top:7px; width:5px; height:5px; background:var(--brass); border-radius:50%}
+  .lang{display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px; color:var(--ink)}
+  .lang span{color:var(--muted)}
+  ul.plain{list-style:none}
+  ul.plain li{position:relative; padding-left:15px; font-size:12.5px; margin-bottom:6px; color:var(--slate)}
+  ul.plain li::before{content:""; position:absolute; left:0; top:7px; width:5px; height:5px; background:var(--brass); border-radius:50%}
+
+  .tail{display:grid; grid-template-columns:1fr 1fr; gap:0 26px}
+  footer{padding:14px 40px; background:var(--paper); border-top:1px solid var(--line);
+         font-size:11px; color:var(--muted); text-align:center; letter-spacing:.2px}
+
+  @media (max-width:860px){
+    .head-top{flex-wrap:wrap}
+    .controls{order:-1; width:100%; flex-direction:row; justify-content:flex-end; align-items:center}
+  }
+  @media (max-width:760px){
+    .body{grid-template-columns:1fr}
+    .tail{grid-template-columns:1fr !important}
+    aside{border-right:none; border-bottom:1px solid var(--line)}
+    header{padding:28px 24px 24px}
+    main{padding:22px 24px}
+    header h1{font-size:29px}
+  }
+  @media print{
+    html[data-theme]{
+      --ink:#14273d; --ink-3:#1d3a56; --brass:#a9843f; --brass-2:#8a6a30;
+      --champ:#efe6d3; --champ-2:#f6efe1; --paper:#fbfaf6; --bg:#fff;
+      --slate:#3a4653; --muted:#6b7682; --line:#e9e3d6;
+    }
+    body{background:#fff}
+    .page{box-shadow:none; margin:0; max-width:none; border-radius:0}
+    .controls{display:none !important}
+    /* linear flow when printing: grid columns split badly across pages */
+    .body{display:flex; flex-direction:column}
+    main{order:1; padding:18px 34px}
+    aside{order:2; padding:18px 34px; border-right:none; border-top:1px solid var(--line)}
+    .wins{grid-template-columns:1fr 1fr}
+    .tail{gap:0 26px}
+    section{break-inside:avoid}
+    h2{break-after:avoid}
+    header,aside,.win,.chips span,.monogram,footer{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .job{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="head-top">
+      <div class="monogram">GN</div>
+      <div class="head-id">
+        <h1>Gonçalo Moreira Neves</h1>
+        <div class="tagline" id="tagline"></div>
+      </div>
+      <div class="controls">
+        <div class="ctlgroup" id="langs" role="group" aria-label="Language"></div>
+        <button class="iconbtn" id="themeBtn" type="button"></button>
+        <button class="iconbtn" id="printBtn" type="button"></button>
+      </div>
+    </div>
+    <div class="role" id="roleline"></div>
+    <div class="contact" id="contact"></div>
+  </header>
+
+  <div class="body">
+    <aside>
+      <section><h2 id="h-results"></h2><div class="wins" id="wins"></div></section>
+      <section><h2 id="h-caps"></h2><div id="skills"></div></section>
+      <section><h2 id="h-edu"></h2><div id="edu"></div></section>
+      <section style="margin-bottom:0"><h2 id="h-certs"></h2><ul class="plain" id="certs"></ul></section>
+    </aside>
+    <main>
+      <section><h2 id="h-profile"></h2><div class="summary" id="profile"></div></section>
+      <section><h2 id="h-exp"></h2><div id="jobs"></div></section>
+      <div class="tail">
+        <section style="margin-bottom:0"><h2 id="h-pubs"></h2><div id="pubs"></div></section>
+        <section style="margin-bottom:0"><h2 id="h-langs"></h2><div id="langlist"></div></section>
+      </div>
+    </main>
+  </div>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+/* ============================================================
+   Content model. One object per language, identical shape.
+   Figures are identical across languages by design: they are
+   the canonical record and must never drift in translation.
+   ============================================================ */
+const CV = {};
+
+CV.en = {
+  docTitle:"Gonçalo Moreira Neves · General Manager CV",
+  title:"General Manager <span class='sep'>|</span> Technical Operations, Growth and Integration",
+  tagline:"An engineer at the core, a commercial leader in practice",
+  roleline:"General Manager <span class='sep'>|</span> Technical Operations, Growth and Integration <span class='sep'>|</span> 15+ years in technical companies across Europe, Asia and North America",
+  ui:{dark:"Dark", light:"Light", print:"Print"},
+  h:{results:"Key results", caps:"Capabilities", edu:"Education", certs:"Certifications",
+     pubs:"Publications and standards", langs:"Languages", profile:"Profile", exp:"Professional experience"},
+  contact:{loc:"Lisbon, Portugal", phone:"+351 962 695 021"},
+  profile:[
+    "General manager of technical businesses, with executive P&L ownership and an engineering background. Took co-leadership of <b>Lumatek Group</b> (a 20-year industrial manufacturer with two brands and international distribution) under a mandate to restructure, professionalise and grow: <b>~60% cost reduction</b> delivered with the CFO, COO and CPO; teams resized and unprofitable markets closed; new geographies and channels opened; two new customer segments created; and <b>210% growth in a key segment in 2025</b>, reaching a four-times run-rate in the first quarter of 2026. The business is growing, commercially self-sustaining and positioned for its next chapter.",
+    "Before that: grew an operation from <b>€0 to €10M+</b> across more than 50 countries; led a technical team from <b>~40 to 100 people in one year</b>, with an <b>83% reduction in labour cost per unit</b> through automation and process redesign; and opened <b>€20M+ in new revenue</b> alongside a <b>40% cut in product OpEx</b> through partnerships and process integration. Direct experience of acquisition and integration: founded and sold a company within 14 months, and today runs technical due diligence for investment decisions.",
+    "Engineering base: <b>M.Sc. Electrical Engineering, majoring in Illumination Engineering and Electrical Building Services</b> (Aalto University, Finland) and a B.Sc. in Electromechanical Engineering (UBI). Technical enough to earn credibility with field teams; enough of a manager to scale the organisation. Now looking for the general management of a technical company with field operations, in a phase of growth, professionalisation and integration."
+  ],
+  wins:[
+    ["~60% cost cut","Business-wide cost-reduction strategy, with CFO, COO and CPO · Lumatek Group"],
+    ["+210% → 4x","Key segment in 2025; 4x the 2025 run-rate in Q1 2026 · Lumatek Group"],
+    ["€0 → €10M+","First deal to scale, across 50+ countries · Valoya"],
+    ["−83% labour cost","Per unit, through automation and new process workflow · Infarm"],
+    ["€20M+ new revenue","Two new revenue streams opened · IGS"],
+    ["−40% OpEx","And −15% CapEx/m², via partnerships and process integration · IGS"],
+    ["40 → 100 people","Cross-functional technical team built in one year · Infarm"],
+    ["Exit in 14 months","Company founded and acquired by a major industry player · Spectron"],
+    ["Series D and B","Contributed to €200M at Infarm (€1B+ val.) and €50M at IGS (€200M+ val.)"]
+  ],
+  skills:[
+    ["Leadership and general management",["General management","P&L ownership","Restructuring and transformation","Professionalising organisations","Developing middle leadership","Accountability culture","Shareholder and board relations","Management routines","Execution discipline"]],
+    ["Operations and technical excellence",["Technical and field teams","Planning and productivity","Resource utilisation","Process redesign","Operational KPIs","Quality of execution","Technical standards","Reliability and safety","Automation, IoT and control systems","Installed equipment lifecycle","SAFe, Agile, Kanban","Flight Levels","ERP","JIRA, Asana, Monday, Confluence"]],
+    ["Growth, customers and performance",["Margin and cost structure","B2B commercial development","Enterprise clients","Key accounts","Channels and distribution","Partnerships","Pricing and segmentation","Technical due diligence","Company integration","Capital raising","Investor relations","Tableau, HubSpot, Salesforce"]]
+  ],
+  jobs:[
+    {title:"co-CEO | Interim Chief of Sales & Marketing", co:"Lumatek Group", meta:"Dec 2024 – present · Lisbon, PT",
+     desc:"Industrial manufacturer of technical lighting systems (HID and LED); 20 years in market, two brands (Lumatek and Photontek) and international distribution.",
+     b:["Full commercial and cultural restructure: teams resized, unprofitable markets closed, new geographies and distribution channels opened.",
+        "Business cost-reduction strategy that cut <b>overall costs by ~60%</b>, delivered with the CFO, COO and CPO.",
+        "<b>210% growth in a key segment in 2025</b> and, in Q1 2026, a <b>4x 2025 run-rate</b>, through targeted development and a repositioned offer.",
+        "Created <b>two new customer segments</b>, expanding the addressable market beyond legacy channels.",
+        "Turned the business into a data-driven organisation; unified the commercial culture and broke down internal silos.",
+        "Supported the product development roadmap, bridging engineering and commercial requirements.",
+        "Business growing, commercially self-sustaining and positioned for its next chapter."]},
+    {title:"Independent Consultant", co:"Gonçalo Neves Consulting", meta:"Apr 2024 – present · Lisbon, PT",
+     desc:"Strategic and technical advisory to investors and industrial operators (client details under NDA).",
+     b:["Technical due diligence on companies, products and technology platforms, for investment and acquisition decisions.",
+        "Market and competitive analysis: technology trends, regulatory landscape, market share and buying behaviour.",
+        "Value-creation frameworks and KPI benchmarks for companies in growth and professionalisation.",
+        "Advice on go-to-market strategy, pricing and commercial team structure; management workshops and training."]},
+    {title:"VP Business Development & Head of AgriTech Partnerships", co:"IGS", meta:"Aug 2021 – Jul 2024 · Edinburgh / Amsterdam",
+     desc:"Award-winning industrial technology company: automation, IoT and environmental control systems, built on six families of patents.",
+     b:["Opened <b>two new revenue streams generating €20M+</b>.",
+        "Cut <b>product OpEx by up to 40%</b> and <b>CapEx/m² by up to 15%</b>, through partnerships and process integration.",
+        "Closed strategic partnerships with <b>Schneider Electric, Viscon Group, Microsoft</b>, Plant Lighting and Wageningen University & Research.",
+        "Built and led the business development team; ran teams for lean business-case development, IP acquisition and partnerships; reported to the CEO and COO.",
+        "Contributed to a Series B of <b>€50M</b>, at a €200M+ valuation."]},
+    {title:"Director of Farm Hardware", co:"Infarm", meta:"Mar 2020 – Mar 2021 · Berlin, DE",
+     desc:"European industrial scale-up building modular controlled-environment production systems, with an installed equipment base across several countries.",
+     b:["Technical team grown from <b>~40 to 100 people in one year</b>; <b>83% reduction in labour cost per unit</b> through automation and new process workflow.",
+        "Created cross-functional teams (hardware, software, operations, digital PM) and led the move to <b>SAFe, Agile, Kanban and Flight Levels</b>; migrated hardware management to JIRA.",
+        "<b>40% reduction in energy cost per unit</b> via a new HVAC design; <b>61% reduction in rent cost per m²</b> through technology integration; <b>+73% output per m²</b>.",
+        "Contributed to a Series D of <b>€200M</b>, at a €1B+ valuation."]},
+    {title:"Founder and Director", co:"Five ventures", meta:"Jun 2016 – Jan 2020 · Amsterdam, NL", desc:"", b:[],
+     v:[["Founder & CEO","Spectron Light Science","Nov 2016 – Dec 2017","Designed and manufactured three LED lighting product lines. The company was <b>acquired by a major industry player within 14 months of founding</b>."],
+        ["Founder & CTO","OneFarm BV","Jan 2017 – Jan 2020","Led technology and product strategy for large-scale industrial rollouts. Raised a seed round (€1M, €5M+ valuation) and assisted in raising a Series A (€9M, €36M+ valuation)."],
+        ["Founder & CEO","BemStudio","Jun 2016 – May 2020","Dutch engineering and business-consulting practice serving industrial clients."],
+        ["Director","A Lab","Jun 2017 – Dec 2019","Ran a production facility and trained ~50 people in controlled-environment production systems."],
+        ["Guest Lecturer","Breitner Academie","Mar – Jun 2017","Technology and production innovation in the Technology Lab, combining theory with rapid prototyping."]]},
+    {title:"Director of Business Development", co:"Valoya", meta:"Jun 2011 – May 2016 · Helsinki, FI / NL",
+     desc:"Manufacturer of technical LED lighting systems. Three roles over five years: Technical Manager → Solution Manager → Director of Business Development. Joined as a minority shareholder.",
+     b:["Closed the <b>company’s first commercial deal, above €300,000</b>, and grew revenue from <b>€0 to €10M+</b>.",
+        "Expanded into <b>50+ countries</b> across Europe, Southeast Asia, Japan and North America; opened the Amsterdam office.",
+        "Closed distribution partnerships in Japan and North America; managed the distributor network.",
+        "Developed and brought the company’s first product lines to market.",
+        "Repositioned the offer on proven technical capability rather than raw efficiency metrics."]},
+    {title:"Researcher", co:"Aalto University", meta:"Apr 2009 – May 2011 · Helsinki, FI",
+     desc:"Research in solid-state lighting: the use, control and industrial application of LEDs. Projects: SSHLighting (2009–2011) and LEDFlowers (2008–2011).", b:[]}
+  ],
+  edu:[
+    ["M.Sc.(Tech.) Electrical Engineering","Illumination Engineering & Electrical Building Services · Aalto University, Finland (2010–2012)"],
+    ["M.Sc. (minor) International Design Business Management","Aalto University, Finland (2011–2012)"],
+    ["B.Sc.(Tech.) Electromechanical Engineering","Universidade da Beira Interior, Portugal (2004–2009)"],
+    ["Erasmus exchange, Electromechanical Engineering","TKK, now Aalto, Finland (2009)"]
+  ],
+  certs:["Leading SAFe, Gladwell Academy","Agile for Hardware, Gladwell Academy","Flight Levels, Flight Levels Academy","Product Development Project, Design Factory, Aalto University","Mental Health First Aider, Worksafe (UK) Ltd","Lighting in Greenhouses & Vertical Farms, Wageningen University & Research (2018)"],
+  pubs:[
+    ["Co-author of a chapter in a reference technical volume","Burleigh Dodds Science Publishing, 2023"],
+    ["Author, publication on units and measurement methods","Aalto University, 2014"],
+    ["Member of an international scientific society","Contributing to the standardisation of units and measurement methods"]
+  ],
+  langs:[["Portuguese","Native"],["English","Full professional"],["Spanish","Advanced"],["French","Basic"],["Finnish","Beginner"]],
+  foot:"Gonçalo Moreira Neves · General Manager application · Confidential, shared 1:1 · August 2026"
+};
+
+CV.pt = {
+  docTitle:"Gonçalo Moreira Neves · CV Diretor Geral",
+  title:"Diretor Geral",
+  tagline:"Engenheiro na base, gestor comercial na prática",
+  roleline:"Diretor Geral <span class='sep'>|</span> Operações Técnicas, Crescimento e Integração <span class='sep'>|</span> 15+ anos em empresas técnicas na Europa, Ásia e América do Norte",
+  ui:{dark:"Escuro", light:"Claro", print:"Imprimir"},
+  h:{results:"Resultados-chave", caps:"Competências", edu:"Formação", certs:"Certificações",
+     pubs:"Publicações e normalização", langs:"Línguas", profile:"Perfil", exp:"Experiência profissional"},
+  contact:{loc:"Lisboa, Portugal", phone:"+351 962 695 021"},
+  profile:[
+    "Gestor de empresas técnicas com responsabilidade executiva de P&L e percurso de engenharia. Assumiu a co-liderança do <b>Lumatek Group</b> (fabricante industrial com 20 anos de mercado, duas marcas e distribuição internacional) com mandato de reestruturação, profissionalização e crescimento: <b>~60% de redução de custos</b> em conjunto com o CFO, COO e CPO; redimensionamento de equipas e encerramento de mercados sem rentabilidade; abertura de novas geografias e canais; criação de dois novos segmentos de clientes; e crescimento de <b>210% num segmento-chave em 2025</b>, atingindo no primeiro trimestre de 2026 um ritmo quatro vezes superior. O negócio está a crescer, é comercialmente autossustentável e está preparado para a fase seguinte.",
+    "Antes disso: crescimento de uma operação de <b>€0 a €10M+</b> em mais de 50 países; liderança de uma equipa técnica de <b>~40 para 100 pessoas num ano</b>, com <b>−83% de custo de mão de obra por unidade</b> através de automação e redesenho de processos; e <b>€20M+ de nova receita</b> com <b>−40% de OpEx de produto</b> via parcerias e integração de processos. Experiência direta em aquisição e integração: fundou e vendeu uma empresa em 14 meses e conduz hoje due diligence técnica para decisões de investimento.",
+    "Base de engenharia: <b>M.Sc. em Engenharia Eletrotécnica, especialização em Luminotecnia e Instalações Elétricas em Edifícios</b> (Aalto, Finlândia) e Licenciatura em Engenharia Eletromecânica (UBI). Técnico o suficiente para ganhar credibilidade junto de equipas no terreno; gestor o suficiente para escalar a organização. Procura agora a direção geral de uma empresa técnica com operação no terreno, em fase de crescimento, profissionalização e integração."
+  ],
+  wins:[
+    ["~60% de custos","Estratégia transversal de redução de custos, com CFO, COO e CPO · Lumatek Group"],
+    ["+210% → 4x","Segmento-chave em 2025; ritmo 4x o de 2025 no Q1 2026 · Lumatek Group"],
+    ["€0 → €10M+","Do primeiro contrato à escala, em 50+ países · Valoya"],
+    ["−83% mão de obra","Custo por unidade, via automação e novos fluxos de processo · Infarm"],
+    ["€20M+ receita nova","Dois novos fluxos de negócio abertos · IGS"],
+    ["−40% OpEx","E −15% de CapEx/m², por parcerias e integração de processos · IGS"],
+    ["40 → 100 pessoas","Equipa técnica multidisciplinar construída num ano · Infarm"],
+    ["Venda em 14 meses","Empresa fundada e adquirida por um player de referência do sector · Spectron"],
+    ["Séries D e B","Contributo para €200M na Infarm (aval. €1B+) e €50M na IGS (aval. €200M+)"]
+  ],
+  skills:[
+    ["Liderança e gestão geral",["Direção geral","Propriedade de P&L","Reestruturação e transformação","Profissionalização de organizações","Desenvolvimento de lideranças intermédias","Cultura de responsabilidade","Relação com acionistas e administração","Rotinas de gestão","Disciplina de execução"]],
+    ["Operações e excelência técnica",["Equipas técnicas e de terreno","Planeamento e produtividade","Utilização de recursos","Redesenho de processos","Indicadores operacionais","Qualidade de execução","Normas técnicas","Fiabilidade e segurança","Automação, IoT e controlo","Ciclo de vida do equipamento instalado","SAFe, Agile, Kanban","Flight Levels","ERP","JIRA, Asana, Monday, Confluence"]],
+    ["Crescimento, clientes e performance",["Margem e estrutura de custos","Desenvolvimento comercial B2B","Clientes empresariais","Contas estratégicas","Canais e distribuição","Parcerias","Preços e segmentação","Due diligence técnica","Integração de empresas","Captação de capital","Relação com investidores","Tableau, HubSpot, Salesforce"]]
+  ],
+  jobs:[
+    {title:"co-CEO | Diretor Comercial e de Marketing (interino)", co:"Lumatek Group", meta:"Dez 2024 – presente · Lisboa, PT",
+     desc:"Fabricante industrial de sistemas de iluminação técnica (HID e LED), 20 anos de mercado, duas marcas (Lumatek e Photontek) e distribuição internacional.",
+     b:["Reestruturação comercial e cultural completa: equipas redimensionadas, mercados sem rentabilidade encerrados, novas geografias e canais de distribuição abertos.",
+        "Estratégia de redução de custos do negócio que cortou <b>~60% dos custos globais</b>, executada em conjunto com o CFO, o COO e o CPO.",
+        "Crescimento de <b>210% num segmento-chave em 2025</b> e, no Q1 2026, um ritmo <b>4x superior ao de 2025</b>, através de desenvolvimento dirigido e reposicionamento da oferta.",
+        "Criação de <b>dois novos segmentos de clientes</b>, alargando o mercado endereçável para além dos canais tradicionais.",
+        "Organização transformada numa empresa orientada por dados; cultura comercial unificada e silos internos eliminados.",
+        "Apoio ao roteiro de desenvolvimento de produto, ligando requisitos de engenharia e requisitos comerciais.",
+        "Negócio a crescer, comercialmente autossustentável e posicionado para a fase seguinte."]},
+    {title:"Consultor Independente", co:"Gonçalo Neves Consulting", meta:"Abr 2024 – presente · Lisboa, PT",
+     desc:"Consultoria estratégica e técnica a investidores e operadores industriais (clientes sob NDA).",
+     b:["Due diligence técnica a empresas, produtos e plataformas tecnológicas, para decisões de investimento e de aquisição.",
+        "Análise de mercado e de concorrência: tendências tecnológicas, enquadramento regulamentar, quota de mercado e comportamento de compra.",
+        "Frameworks de criação de valor e benchmarks de KPI para empresas em crescimento e profissionalização.",
+        "Aconselhamento em estratégia de mercado, preços e estrutura de equipas comerciais; workshops e formação de gestão."]},
+    {title:"VP Business Development & Head of AgriTech Partnerships", co:"IGS", meta:"Ago 2021 – Jul 2024 · Edimburgo / Amesterdão",
+     desc:"Empresa premiada de tecnologia industrial: automação, IoT e sistemas de controlo ambiental, assente em seis famílias de patentes.",
+     b:["Abertura de <b>dois novos fluxos de receita, gerando €20M+</b>.",
+        "Redução do <b>OpEx de produto até 40%</b> e do <b>CapEx/m² até 15%</b>, através de parcerias e integração de processos.",
+        "Parcerias estratégicas fechadas com <b>Schneider Electric, Viscon Group, Microsoft</b>, Plant Lighting e Wageningen University & Research.",
+        "Construção e liderança da equipa de desenvolvimento de negócio; equipas de business case, aquisição de IP e parcerias; reporte ao CEO e ao COO.",
+        "Contributo para a ronda de Série B de <b>€50M</b>, a uma avaliação superior a €200M."]},
+    {title:"Director of Farm Hardware", co:"Infarm", meta:"Mar 2020 – Mar 2021 · Berlim, DE",
+     desc:"Scale-up industrial europeia de sistemas modulares de produção em ambiente controlado, com parque de equipamento instalado em vários países.",
+     b:["Equipa técnica crescida de <b>~40 para 100 pessoas num ano</b>; <b>−83% de custo de mão de obra por unidade</b> através de automação e de novos fluxos de processo.",
+        "Criação de equipas multidisciplinares (hardware, software, operação, gestão de projeto) e implementação de <b>SAFe, Agile, Kanban e Flight Levels</b>; gestão de hardware migrada para JIRA.",
+        "<b>−40% de custo de energia por unidade</b> através de um novo desenho de AVAC; <b>−61% de custo de renda por m²</b> por integração de tecnologia; <b>+73% de produção por m²</b>.",
+        "Contributo para a ronda de Série D de <b>€200M</b>, a uma avaliação superior a €1B."]},
+    {title:"Fundador e Diretor", co:"Cinco empresas", meta:"Jun 2016 – Jan 2020 · Amesterdão, NL", desc:"", b:[],
+     v:[["Fundador e CEO","Spectron Light Science","Nov 2016 – Dez 2017","Desenho e fabrico de três linhas de produto de iluminação LED. Empresa <b>adquirida por um player de referência do sector 14 meses após a fundação</b>."],
+        ["Fundador e CTO","OneFarm BV","Jan 2017 – Jan 2020","Estratégia de tecnologia e produto para implementações industriais de larga escala. Ronda seed de €1M (avaliação €5M+); apoio à Série A de €9M (avaliação €36M+)."],
+        ["Fundador e CEO","BemStudio","Jun 2016 – Mai 2020","Consultora de engenharia e de gestão nos Países Baixos, ao serviço de clientes industriais."],
+        ["Diretor","A Lab","Jun 2017 – Dez 2019","Direção de uma unidade de produção e formação de ~50 pessoas em sistemas de produção em ambiente controlado."],
+        ["Docente convidado","Breitner Academie","Mar – Jun 2017","Inovação em tecnologia e produção no Technology Lab, com prototipagem rápida."]]},
+    {title:"Diretor de Desenvolvimento de Negócio", co:"Valoya", meta:"Jun 2011 – Mai 2016 · Helsínquia, FI / NL",
+     desc:"Fabricante de sistemas de iluminação LED técnica. Percurso em três cargos ao longo de cinco anos: Technical Manager → Solution Manager → Director of Business Development. Entrou como acionista minoritário.",
+     b:["Fecho do <b>primeiro contrato comercial da empresa, superior a €300.000</b>, e crescimento da receita de <b>€0 para €10M+</b>.",
+        "Expansão a <b>mais de 50 países</b> na Europa, Sudeste Asiático, Japão e América do Norte; abertura do escritório de Amesterdão.",
+        "Parcerias de distribuição fechadas no Japão e na América do Norte; gestão da relação com a rede de distribuidores.",
+        "Desenvolvimento e lançamento no mercado das primeiras linhas de produto da empresa.",
+        "Reposicionamento da oferta em capacidade técnica comprovada, e não em métricas brutas de eficiência."]},
+    {title:"Investigador", co:"Aalto University", meta:"Abr 2009 – Mai 2011 · Helsínquia, FI",
+     desc:"Investigação em iluminação de estado sólido: utilização, controlo e aplicação industrial de LED. Projetos SSHLighting (2009–2011) e LEDFlowers (2008–2011).", b:[]}
+  ],
+  edu:[
+    ["M.Sc.(Tech.) Engenharia Eletrotécnica","Luminotecnia e Instalações Elétricas em Edifícios · Aalto University, Finlândia (2010–2012)"],
+    ["M.Sc. (minor) International Design Business Management","Aalto University, Finlândia (2011–2012)"],
+    ["Licenciatura em Engenharia Eletromecânica","Universidade da Beira Interior, Portugal (2004–2009)"],
+    ["Erasmus, Engenharia Eletromecânica","TKK, atual Aalto, Finlândia (2009)"]
+  ],
+  certs:["Leading SAFe, Gladwell Academy","Agile for Hardware, Gladwell Academy","Flight Levels, Flight Levels Academy","Product Development Project, Design Factory, Aalto University","Mental Health First Aider, Worksafe (UK) Ltd","Lighting in Greenhouses & Vertical Farms, Wageningen University & Research (2018)"],
+  pubs:[
+    ["Coautor de capítulo em obra técnica de referência","Burleigh Dodds Science Publishing, 2023"],
+    ["Autor, publicação sobre unidades e métodos de medição","Aalto University, 2014"],
+    ["Membro de sociedade científica internacional","Com contributo para a normalização de unidades e métodos de medição"]
+  ],
+  langs:[["Português","Nativo"],["Inglês","Profissional pleno"],["Espanhol","Avançado"],["Francês","Básico"],["Finlandês","Iniciado"]],
+  foot:"Gonçalo Moreira Neves · Candidatura a Diretor Geral · Documento confidencial, partilhado 1:1 · Agosto 2026"
+};
+
+CV.es = {
+  docTitle:"Gonçalo Moreira Neves · CV Director General",
+  title:"Director General",
+  tagline:"Ingeniero de base, líder comercial en la práctica",
+  roleline:"Director General <span class='sep'>|</span> Operaciones Técnicas, Crecimiento e Integración <span class='sep'>|</span> 15+ años en empresas técnicas en Europa, Asia y América del Norte",
+  ui:{dark:"Oscuro", light:"Claro", print:"Imprimir"},
+  h:{results:"Resultados clave", caps:"Competencias", edu:"Formación", certs:"Certificaciones",
+     pubs:"Publicaciones y normalización", langs:"Idiomas", profile:"Perfil", exp:"Experiencia profesional"},
+  contact:{loc:"Lisboa, Portugal", phone:"+351 962 695 021"},
+  profile:[
+    "Director de empresas técnicas con responsabilidad ejecutiva de P&L y trayectoria de ingeniería. Asumió el co-liderazgo de <b>Lumatek Group</b> (fabricante industrial con 20 años de mercado, dos marcas y distribución internacional) con un mandato de reestructuración, profesionalización y crecimiento: <b>~60% de reducción de costes</b> junto al CFO, COO y CPO; redimensionamiento de equipos y cierre de mercados no rentables; apertura de nuevas geografías y canales; creación de dos nuevos segmentos de clientes; y crecimiento del <b>210% en un segmento clave en 2025</b>, alcanzando en el primer trimestre de 2026 un ritmo cuatro veces superior. El negocio crece, es comercialmente autosostenible y está preparado para su siguiente etapa.",
+    "Antes de eso: crecimiento de una operación de <b>€0 a €10M+</b> en más de 50 países; liderazgo de un equipo técnico de <b>~40 a 100 personas en un año</b>, con una <b>reducción del 83% del coste de mano de obra por unidad</b> mediante automatización y rediseño de procesos; y <b>€20M+ de nuevos ingresos</b> junto a una <b>reducción del 40% del OpEx de producto</b> por alianzas e integración de procesos. Experiencia directa en adquisición e integración: fundó y vendió una empresa en 14 meses y hoy realiza due diligence técnica para decisiones de inversión.",
+    "Base de ingeniería: <b>M.Sc. en Ingeniería Eléctrica, especialidad en Luminotecnia e Instalaciones Eléctricas en Edificios</b> (Aalto, Finlandia) y Grado en Ingeniería Electromecánica (UBI). Suficientemente técnico para ganar credibilidad ante equipos de campo; suficientemente gestor para escalar la organización. Busca ahora la dirección general de una empresa técnica con operación de campo, en fase de crecimiento, profesionalización e integración."
+  ],
+  wins:[
+    ["~60% de costes","Estrategia transversal de reducción de costes, con CFO, COO y CPO · Lumatek Group"],
+    ["+210% → 4x","Segmento clave en 2025; ritmo 4x el de 2025 en el Q1 2026 · Lumatek Group"],
+    ["€0 → €10M+","Del primer contrato a la escala, en 50+ países · Valoya"],
+    ["−83% mano de obra","Coste por unidad, vía automatización y nuevos flujos de proceso · Infarm"],
+    ["€20M+ ingresos nuevos","Dos nuevas líneas de ingresos abiertas · IGS"],
+    ["−40% OpEx","Y −15% de CapEx/m², por alianzas e integración de procesos · IGS"],
+    ["40 → 100 personas","Equipo técnico multidisciplinar construido en un año · Infarm"],
+    ["Venta en 14 meses","Empresa fundada y adquirida por un actor de referencia del sector · Spectron"],
+    ["Series D y B","Contribución a €200M en Infarm (val. €1B+) y €50M en IGS (val. €200M+)"]
+  ],
+  skills:[
+    ["Liderazgo y dirección general",["Dirección general","Responsabilidad de P&L","Reestructuración y transformación","Profesionalización de organizaciones","Desarrollo de mandos intermedios","Cultura de responsabilidad","Relación con accionistas y consejo","Rutinas de gestión","Disciplina de ejecución"]],
+    ["Operaciones y excelencia técnica",["Equipos técnicos y de campo","Planificación y productividad","Uso de recursos","Rediseño de procesos","Indicadores operativos","Calidad de ejecución","Normas técnicas","Fiabilidad y seguridad","Automatización, IoT y control","Ciclo de vida del equipo instalado","SAFe, Agile, Kanban","Flight Levels","ERP","JIRA, Asana, Monday, Confluence"]],
+    ["Crecimiento, clientes y desempeño",["Margen y estructura de costes","Desarrollo comercial B2B","Clientes empresariales","Cuentas estratégicas","Canales y distribución","Alianzas","Precios y segmentación","Due diligence técnica","Integración de empresas","Captación de capital","Relación con inversores","Tableau, HubSpot, Salesforce"]]
+  ],
+  jobs:[
+    {title:"co-CEO | Director Comercial y de Marketing (interino)", co:"Lumatek Group", meta:"Dic 2024 – actualidad · Lisboa, PT",
+     desc:"Fabricante industrial de sistemas de iluminación técnica (HID y LED), 20 años de mercado, dos marcas (Lumatek y Photontek) y distribución internacional.",
+     b:["Reestructuración comercial y cultural completa: equipos redimensionados, mercados no rentables cerrados, nuevas geografías y canales de distribución abiertos.",
+        "Estrategia de reducción de costes que recortó <b>~60% de los costes globales</b>, ejecutada junto al CFO, el COO y el CPO.",
+        "Crecimiento del <b>210% en un segmento clave en 2025</b> y, en el Q1 2026, un ritmo <b>4x superior al de 2025</b>, mediante desarrollo dirigido y reposicionamiento de la oferta.",
+        "Creación de <b>dos nuevos segmentos de clientes</b>, ampliando el mercado abordable más allá de los canales tradicionales.",
+        "Organización transformada en una empresa orientada a datos; cultura comercial unificada y silos internos eliminados.",
+        "Apoyo a la hoja de ruta de producto, conectando requisitos de ingeniería y requisitos comerciales.",
+        "Negocio en crecimiento, comercialmente autosostenible y posicionado para su siguiente etapa."]},
+    {title:"Consultor Independiente", co:"Gonçalo Neves Consulting", meta:"Abr 2024 – actualidad · Lisboa, PT",
+     desc:"Asesoría estratégica y técnica a inversores y operadores industriales (clientes bajo NDA).",
+     b:["Due diligence técnica sobre empresas, productos y plataformas tecnológicas, para decisiones de inversión y adquisición.",
+        "Análisis de mercado y competencia: tendencias tecnológicas, marco regulatorio, cuota de mercado y comportamiento de compra.",
+        "Marcos de creación de valor y benchmarks de KPI para empresas en crecimiento y profesionalización.",
+        "Asesoramiento en estrategia de mercado, precios y estructura de equipos comerciales; talleres y formación de gestión."]},
+    {title:"VP Business Development & Head of AgriTech Partnerships", co:"IGS", meta:"Ago 2021 – Jul 2024 · Edimburgo / Ámsterdam",
+     desc:"Empresa premiada de tecnología industrial: automatización, IoT y sistemas de control ambiental, sobre seis familias de patentes.",
+     b:["Apertura de <b>dos nuevas líneas de ingresos, generando €20M+</b>.",
+        "Reducción del <b>OpEx de producto hasta un 40%</b> y del <b>CapEx/m² hasta un 15%</b>, mediante alianzas e integración de procesos.",
+        "Alianzas estratégicas cerradas con <b>Schneider Electric, Viscon Group, Microsoft</b>, Plant Lighting y Wageningen University & Research.",
+        "Construcción y liderazgo del equipo de desarrollo de negocio; equipos de business case, adquisición de IP y alianzas; reporte al CEO y al COO.",
+        "Contribución a una Serie B de <b>€50M</b>, con una valoración superior a €200M."]},
+    {title:"Director of Farm Hardware", co:"Infarm", meta:"Mar 2020 – Mar 2021 · Berlín, DE",
+     desc:"Scale-up industrial europea de sistemas modulares de producción en entorno controlado, con parque de equipos instalado en varios países.",
+     b:["Equipo técnico crecido de <b>~40 a 100 personas en un año</b>; <b>reducción del 83% del coste de mano de obra por unidad</b> mediante automatización y nuevos flujos de proceso.",
+        "Creación de equipos multidisciplinares (hardware, software, operaciones, gestión de proyecto) e implantación de <b>SAFe, Agile, Kanban y Flight Levels</b>; gestión de hardware migrada a JIRA.",
+        "<b>Reducción del 40% del coste de energía por unidad</b> con un nuevo diseño de HVAC; <b>reducción del 61% del coste de alquiler por m²</b> por integración tecnológica; <b>+73% de producción por m²</b>.",
+        "Contribución a una Serie D de <b>€200M</b>, con una valoración superior a €1B."]},
+    {title:"Fundador y Director", co:"Cinco empresas", meta:"Jun 2016 – Ene 2020 · Ámsterdam, NL", desc:"", b:[],
+     v:[["Fundador y CEO","Spectron Light Science","Nov 2016 – Dic 2017","Diseño y fabricación de tres líneas de producto de iluminación LED. La empresa fue <b>adquirida por un actor de referencia del sector 14 meses después de su fundación</b>."],
+        ["Fundador y CTO","OneFarm BV","Ene 2017 – Ene 2020","Estrategia de tecnología y producto para despliegues industriales de gran escala. Ronda seed de €1M (valoración €5M+); apoyo a una Serie A de €9M (valoración €36M+)."],
+        ["Fundador y CEO","BemStudio","Jun 2016 – May 2020","Consultora neerlandesa de ingeniería y gestión al servicio de clientes industriales."],
+        ["Director","A Lab","Jun 2017 – Dic 2019","Dirección de una unidad de producción y formación de ~50 personas en sistemas de producción en entorno controlado."],
+        ["Profesor invitado","Breitner Academie","Mar – Jun 2017","Innovación en tecnología y producción en el Technology Lab, con prototipado rápido."]]},
+    {title:"Director de Desarrollo de Negocio", co:"Valoya", meta:"Jun 2011 – May 2016 · Helsinki, FI / NL",
+     desc:"Fabricante de sistemas de iluminación LED técnica. Tres cargos en cinco años: Technical Manager → Solution Manager → Director of Business Development. Entró como accionista minoritario.",
+     b:["Cierre del <b>primer contrato comercial de la empresa, superior a €300.000</b>, y crecimiento de los ingresos de <b>€0 a €10M+</b>.",
+        "Expansión a <b>más de 50 países</b> en Europa, Sudeste Asiático, Japón y América del Norte; apertura de la oficina de Ámsterdam.",
+        "Alianzas de distribución cerradas en Japón y América del Norte; gestión de la red de distribuidores.",
+        "Desarrollo y lanzamiento al mercado de las primeras líneas de producto de la empresa.",
+        "Reposicionamiento de la oferta sobre capacidad técnica contrastada, y no sobre métricas brutas de eficiencia."]},
+    {title:"Investigador", co:"Aalto University", meta:"Abr 2009 – May 2011 · Helsinki, FI",
+     desc:"Investigación en iluminación de estado sólido: uso, control y aplicación industrial de LED. Proyectos SSHLighting (2009–2011) y LEDFlowers (2008–2011).", b:[]}
+  ],
+  edu:[
+    ["M.Sc.(Tech.) Ingeniería Eléctrica","Luminotecnia e Instalaciones Eléctricas en Edificios · Aalto University, Finlandia (2010–2012)"],
+    ["M.Sc. (minor) International Design Business Management","Aalto University, Finlandia (2011–2012)"],
+    ["Grado en Ingeniería Electromecánica","Universidade da Beira Interior, Portugal (2004–2009)"],
+    ["Erasmus, Ingeniería Electromecánica","TKK, hoy Aalto, Finlandia (2009)"]
+  ],
+  certs:["Leading SAFe, Gladwell Academy","Agile for Hardware, Gladwell Academy","Flight Levels, Flight Levels Academy","Product Development Project, Design Factory, Aalto University","Mental Health First Aider, Worksafe (UK) Ltd","Lighting in Greenhouses & Vertical Farms, Wageningen University & Research (2018)"],
+  pubs:[
+    ["Coautor de un capítulo en obra técnica de referencia","Burleigh Dodds Science Publishing, 2023"],
+    ["Autor, publicación sobre unidades y métodos de medición","Aalto University, 2014"],
+    ["Miembro de sociedad científica internacional","Con contribución a la normalización de unidades y métodos de medición"]
+  ],
+  langs:[["Portugués","Nativo"],["Inglés","Profesional pleno"],["Español","Avanzado"],["Francés","Básico"],["Finés","Inicial"]],
+  foot:"Gonçalo Moreira Neves · Candidatura a Director General · Documento confidencial, compartido 1:1 · Agosto 2026"
+};
+
+CV.fr = {
+  docTitle:"Gonçalo Moreira Neves · CV Directeur Général",
+  title:"Directeur Général",
+  tagline:"Ingénieur de formation, dirigeant commercial dans la pratique",
+  roleline:"Directeur Général <span class='sep'>|</span> Opérations Techniques, Croissance et Intégration <span class='sep'>|</span> 15+ ans dans des entreprises techniques en Europe, en Asie et en Amérique du Nord",
+  ui:{dark:"Sombre", light:"Clair", print:"Imprimer"},
+  h:{results:"Résultats clés", caps:"Compétences", edu:"Formation", certs:"Certifications",
+     pubs:"Publications et normalisation", langs:"Langues", profile:"Profil", exp:"Expérience professionnelle"},
+  contact:{loc:"Lisbonne, Portugal", phone:"+351 962 695 021"},
+  profile:[
+    "Dirigeant d’entreprises techniques, avec responsabilité exécutive du P&L et un parcours d’ingénieur. A pris la co-direction de <b>Lumatek Group</b> (fabricant industriel de 20 ans d’existence, deux marques et une distribution internationale) avec un mandat de restructuration, de professionnalisation et de croissance : <b>~60% de réduction des coûts</b> avec le CFO, le COO et le CPO ; équipes redimensionnées et marchés non rentables fermés ; nouvelles géographies et nouveaux canaux ouverts ; deux nouveaux segments de clients créés ; et une <b>croissance de 210% sur un segment clé en 2025</b>, atteignant au premier trimestre 2026 un rythme quatre fois supérieur. L’entreprise est en croissance, commercialement autonome et prête pour son étape suivante.",
+    "Auparavant : croissance d’une activité de <b>€0 à €10M+</b> dans plus de 50 pays ; direction d’une équipe technique passée de <b>~40 à 100 personnes en un an</b>, avec une <b>baisse de 83% du coût de main-d’œuvre par unité</b> par l’automatisation et la refonte des processus ; et <b>€20M+ de revenus nouveaux</b> avec une <b>baisse de 40% de l’OpEx produit</b> par les partenariats et l’intégration de processus. Expérience directe de l’acquisition et de l’intégration : a fondé et vendu une société en 14 mois, et conduit aujourd’hui des due diligences techniques pour des décisions d’investissement.",
+    "Socle d’ingénieur : <b>M.Sc. en Génie Électrique, spécialité Éclairagisme et Installations Électriques du Bâtiment</b> (Aalto, Finlande) et Licence en Génie Électromécanique (UBI). Assez technique pour gagner la crédibilité des équipes de terrain ; assez gestionnaire pour faire changer l’organisation d’échelle. Recherche aujourd’hui la direction générale d’une entreprise technique avec des opérations de terrain, en phase de croissance, de professionnalisation et d’intégration."
+  ],
+  wins:[
+    ["~60% de coûts","Stratégie transversale de réduction des coûts, avec CFO, COO et CPO · Lumatek Group"],
+    ["+210% → 4x","Segment clé en 2025 ; rythme 4x celui de 2025 au T1 2026 · Lumatek Group"],
+    ["€0 → €10M+","Du premier contrat à l’échelle, dans 50+ pays · Valoya"],
+    ["−83% main-d’œuvre","Coût par unité, par automatisation et nouveaux flux de processus · Infarm"],
+    ["€20M+ de revenus","Deux nouvelles sources de revenus ouvertes · IGS"],
+    ["−40% OpEx","Et −15% de CapEx/m², par partenariats et intégration de processus · IGS"],
+    ["40 → 100 personnes","Équipe technique pluridisciplinaire construite en un an · Infarm"],
+    ["Cession en 14 mois","Société fondée et rachetée par un acteur de référence du secteur · Spectron"],
+    ["Séries D et B","Contribution à €200M chez Infarm (val. €1B+) et €50M chez IGS (val. €200M+)"]
+  ],
+  skills:[
+    ["Direction et management général",["Direction générale","Responsabilité du P&L","Restructuration et transformation","Professionnalisation des organisations","Développement du management intermédiaire","Culture de responsabilité","Relations actionnaires et conseil","Routines de pilotage","Discipline d’exécution"]],
+    ["Opérations et excellence technique",["Équipes techniques et de terrain","Planification et productivité","Utilisation des ressources","Refonte des processus","Indicateurs opérationnels","Qualité d’exécution","Normes techniques","Fiabilité et sécurité","Automatisation, IoT et contrôle","Cycle de vie du parc installé","SAFe, Agile, Kanban","Flight Levels","ERP","JIRA, Asana, Monday, Confluence"]],
+    ["Croissance, clients et performance",["Marge et structure de coûts","Développement commercial B2B","Clients entreprises","Comptes stratégiques","Canaux et distribution","Partenariats","Prix et segmentation","Due diligence technique","Intégration d’entreprises","Levée de fonds","Relations investisseurs","Tableau, HubSpot, Salesforce"]]
+  ],
+  jobs:[
+    {title:"co-CEO | Directeur Commercial et Marketing (par intérim)", co:"Lumatek Group", meta:"Déc. 2024 – aujourd’hui · Lisbonne, PT",
+     desc:"Fabricant industriel de systèmes d’éclairage technique (HID et LED), 20 ans de marché, deux marques (Lumatek et Photontek) et distribution internationale.",
+     b:["Restructuration commerciale et culturelle complète : équipes redimensionnées, marchés non rentables fermés, nouvelles géographies et nouveaux canaux de distribution ouverts.",
+        "Stratégie de réduction des coûts ayant supprimé <b>~60% des coûts globaux</b>, menée avec le CFO, le COO et le CPO.",
+        "<b>Croissance de 210% sur un segment clé en 2025</b> et, au T1 2026, un rythme <b>4x supérieur à celui de 2025</b>, par un développement ciblé et un repositionnement de l’offre.",
+        "Création de <b>deux nouveaux segments de clients</b>, élargissant le marché adressable au-delà des canaux historiques.",
+        "Organisation transformée en entreprise pilotée par la donnée ; culture commerciale unifiée et silos internes supprimés.",
+        "Appui à la feuille de route produit, en reliant exigences d’ingénierie et exigences commerciales.",
+        "Activité en croissance, commercialement autonome et positionnée pour son étape suivante."]},
+    {title:"Consultant Indépendant", co:"Gonçalo Neves Consulting", meta:"Avr. 2024 – aujourd’hui · Lisbonne, PT",
+     desc:"Conseil stratégique et technique auprès d’investisseurs et d’opérateurs industriels (clients sous NDA).",
+     b:["Due diligence technique sur des sociétés, des produits et des plateformes technologiques, pour des décisions d’investissement et d’acquisition.",
+        "Analyse de marché et de concurrence : tendances technologiques, cadre réglementaire, parts de marché et comportement d’achat.",
+        "Cadres de création de valeur et référentiels de KPI pour des entreprises en croissance et en professionnalisation.",
+        "Conseil en stratégie de marché, en prix et en structure d’équipes commerciales ; ateliers et formation au management."]},
+    {title:"VP Business Development & Head of AgriTech Partnerships", co:"IGS", meta:"Août 2021 – Juil. 2024 · Édimbourg / Amsterdam",
+     desc:"Société primée de technologie industrielle : automatisation, IoT et systèmes de contrôle environnemental, fondés sur six familles de brevets.",
+     b:["Ouverture de <b>deux nouvelles sources de revenus, générant €20M+</b>.",
+        "Réduction de l’<b>OpEx produit jusqu’à 40%</b> et du <b>CapEx/m² jusqu’à 15%</b>, par des partenariats et l’intégration de processus.",
+        "Partenariats stratégiques conclus avec <b>Schneider Electric, Viscon Group, Microsoft</b>, Plant Lighting et Wageningen University & Research.",
+        "Construction et direction de l’équipe de développement commercial ; équipes business case, acquisition de PI et partenariats ; rattachement au CEO et au COO.",
+        "Contribution à une Série B de <b>€50M</b>, sur une valorisation supérieure à €200M."]},
+    {title:"Director of Farm Hardware", co:"Infarm", meta:"Mars 2020 – Mars 2021 · Berlin, DE",
+     desc:"Scale-up industrielle européenne de systèmes modulaires de production en environnement contrôlé, avec un parc d’équipements installé dans plusieurs pays.",
+     b:["Équipe technique passée de <b>~40 à 100 personnes en un an</b> ; <b>baisse de 83% du coût de main-d’œuvre par unité</b> par l’automatisation et de nouveaux flux de processus.",
+        "Création d’équipes pluridisciplinaires (hardware, logiciel, opérations, gestion de projet) et passage à <b>SAFe, Agile, Kanban et Flight Levels</b> ; gestion du hardware migrée sur JIRA.",
+        "<b>Baisse de 40% du coût énergétique par unité</b> grâce à une nouvelle conception CVC ; <b>baisse de 61% du coût de loyer par m²</b> par intégration technologique ; <b>+73% de production par m²</b>.",
+        "Contribution à une Série D de <b>€200M</b>, sur une valorisation supérieure à €1B."]},
+    {title:"Fondateur et Directeur", co:"Cinq sociétés", meta:"Juin 2016 – Janv. 2020 · Amsterdam, NL", desc:"", b:[],
+     v:[["Fondateur et CEO","Spectron Light Science","Nov. 2016 – Déc. 2017","Conception et fabrication de trois gammes de produits d’éclairage LED. La société a été <b>rachetée par un acteur de référence du secteur 14 mois après sa création</b>."],
+        ["Fondateur et CTO","OneFarm BV","Janv. 2017 – Janv. 2020","Stratégie technologique et produit pour des déploiements industriels de grande échelle. Levée d’amorçage de €1M (valorisation €5M+) ; appui à une Série A de €9M (valorisation €36M+)."],
+        ["Fondateur et CEO","BemStudio","Juin 2016 – Mai 2020","Cabinet néerlandais de conseil en ingénierie et en gestion au service de clients industriels."],
+        ["Directeur","A Lab","Juin 2017 – Déc. 2019","Direction d’une unité de production et formation d’environ 50 personnes aux systèmes de production en environnement contrôlé."],
+        ["Intervenant","Breitner Academie","Mars – Juin 2017","Innovation en technologie et en production au Technology Lab, avec prototypage rapide."]]},
+    {title:"Directeur du Développement Commercial", co:"Valoya", meta:"Juin 2011 – Mai 2016 · Helsinki, FI / NL",
+     desc:"Fabricant de systèmes d’éclairage LED technique. Trois postes en cinq ans : Technical Manager → Solution Manager → Director of Business Development. Entré comme actionnaire minoritaire.",
+     b:["Signature du <b>premier contrat commercial de la société, supérieur à €300 000</b>, et croissance du chiffre d’affaires de <b>€0 à €10M+</b>.",
+        "Expansion dans <b>plus de 50 pays</b> en Europe, en Asie du Sud-Est, au Japon et en Amérique du Nord ; ouverture du bureau d’Amsterdam.",
+        "Partenariats de distribution conclus au Japon et en Amérique du Nord ; gestion du réseau de distributeurs.",
+        "Développement et mise sur le marché des premières gammes de produits de la société.",
+        "Repositionnement de l’offre sur une capacité technique démontrée, et non sur des métriques brutes d’efficacité."]},
+    {title:"Chercheur", co:"Aalto University", meta:"Avr. 2009 – Mai 2011 · Helsinki, FI",
+     desc:"Recherche en éclairage à semi-conducteurs : usage, contrôle et application industrielle des LED. Projets SSHLighting (2009–2011) et LEDFlowers (2008–2011).", b:[]}
+  ],
+  edu:[
+    ["M.Sc.(Tech.) Génie Électrique","Éclairagisme et Installations Électriques du Bâtiment · Aalto University, Finlande (2010–2012)"],
+    ["M.Sc. (mineure) International Design Business Management","Aalto University, Finlande (2011–2012)"],
+    ["Licence en Génie Électromécanique","Universidade da Beira Interior, Portugal (2004–2009)"],
+    ["Erasmus, Génie Électromécanique","TKK, aujourd’hui Aalto, Finlande (2009)"]
+  ],
+  certs:["Leading SAFe, Gladwell Academy","Agile for Hardware, Gladwell Academy","Flight Levels, Flight Levels Academy","Product Development Project, Design Factory, Aalto University","Mental Health First Aider, Worksafe (UK) Ltd","Lighting in Greenhouses & Vertical Farms, Wageningen University & Research (2018)"],
+  pubs:[
+    ["Co-auteur d’un chapitre dans un ouvrage technique de référence","Burleigh Dodds Science Publishing, 2023"],
+    ["Auteur, publication sur les unités et méthodes de mesure","Aalto University, 2014"],
+    ["Membre d’une société scientifique internationale","Contribution à la normalisation des unités et méthodes de mesure"]
+  ],
+  langs:[["Portugais","Langue maternelle"],["Anglais","Professionnel complet"],["Espagnol","Avancé"],["Français","Notions"],["Finnois","Débutant"]],
+  foot:"Gonçalo Moreira Neves · Candidature Directeur Général · Document confidentiel, partagé en 1:1 · Août 2026"
+};
+
+/* ============================================================
+   Render
+   ============================================================ */
+const LANGS = [["en","EN"],["pt","PT"],["es","ES"],["fr","FR"]];
+const $ = id => document.getElementById(id);
+const el = (tag, cls, html) => { const n=document.createElement(tag); if(cls) n.className=cls; if(html!=null) n.innerHTML=html; return n; };
+
+let state = { lang:"en", theme:"light" };
+
+const SUN = '<svg viewBox="0 0 24 24"><path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0 2a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm0-18a1 1 0 011 1v2a1 1 0 11-2 0V2a1 1 0 011-1zm10 11a1 1 0 01-1 1h-2a1 1 0 110-2h2a1 1 0 011 1zM5 12a1 1 0 01-1 1H2a1 1 0 110-2h2a1 1 0 011 1zm14.07 7.07a1 1 0 01-1.41 0l-1.42-1.42a1 1 0 011.41-1.41l1.42 1.42a1 1 0 010 1.41zM7.76 7.76a1 1 0 01-1.41 0L4.93 6.34a1 1 0 011.41-1.41l1.42 1.42a1 1 0 010 1.41zm11.31-2.83a1 1 0 010 1.41L17.66 7.76a1 1 0 11-1.41-1.41l1.41-1.42a1 1 0 011.41 0zM7.76 16.24a1 1 0 010 1.41l-1.42 1.42a1 1 0 01-1.41-1.41l1.42-1.42a1 1 0 011.41 0z"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24"><path d="M21.53 15.93A9 9 0 018.07 2.47a9.5 9.5 0 1013.46 13.46z"/></svg>';
+const PRINTER = '<svg viewBox="0 0 24 24"><path d="M7 3h10v4H7V3zm12 6H5a3 3 0 00-3 3v5h4v4h12v-4h4v-5a3 3 0 00-3-3zm-3 10H8v-5h8v5z"/></svg>';
+
+function buildLangButtons(){
+  const wrap = $("langs"); wrap.innerHTML = "";
+  LANGS.forEach(([code,label])=>{
+    const b = el("button", null, label);
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(code === state.lang));
+    b.setAttribute("aria-label", label);
+    b.addEventListener("click", ()=>{ state.lang = code; render(); });
+    wrap.appendChild(b);
+  });
+}
+
+function setTheme(t){
+  state.theme = t;
+  document.documentElement.setAttribute("data-theme", t);
+  const d = CV[state.lang].ui;
+  $("themeBtn").innerHTML = (t === "light" ? MOON : SUN) + "<span>" + (t === "light" ? d.dark : d.light) + "</span>";
+  $("themeBtn").setAttribute("aria-label", t === "light" ? d.dark : d.light);
+}
+
+function render(){
+  const d = CV[state.lang];
+  document.documentElement.lang = state.lang;
+  document.title = d.docTitle;
+
+  $("tagline").textContent = d.tagline;
+  $("roleline").innerHTML = d.roleline;
+
+  $("contact").innerHTML =
+    '<span>📍 ' + d.contact.loc + '</span>' +
+    '<span>📞 ' + d.contact.phone + '</span>' +
+    '<a href="mailto:goncalocsmn@gmail.com">✉ goncalocsmn@gmail.com</a>' +
+    '<a href="https://www.linkedin.com/in/moreiraneves" target="_blank" rel="noopener">linkedin.com/in/moreiraneves</a>';
+
+  $("h-results").textContent  = d.h.results;
+  $("h-caps").textContent     = d.h.caps;
+  $("h-edu").textContent      = d.h.edu;
+  $("h-certs").textContent    = d.h.certs;
+  $("h-pubs").textContent     = d.h.pubs;
+  $("h-langs").textContent    = d.h.langs;
+  $("h-profile").textContent  = d.h.profile;
+  $("h-exp").textContent      = d.h.exp;
+
+  $("wins").innerHTML = d.wins.map(w =>
+    '<div class="win"><b>' + w[0] + '</b><span>' + w[1] + '</span></div>').join("");
+
+  $("skills").innerHTML = d.skills.map(g =>
+    '<div class="skillgroup"><h3>' + g[0] + '</h3><div class="chips">' +
+    g[1].map(s => '<span>' + s + '</span>').join("") + '</div></div>').join("");
+
+  $("edu").innerHTML = d.edu.map(e =>
+    '<div class="edu"><b>' + e[0] + '</b><span>' + e[1] + '</span></div>').join("");
+
+  $("certs").innerHTML = d.certs.map(c => '<li>' + c + '</li>').join("");
+
+  $("pubs").innerHTML = d.pubs.map(p =>
+    '<div class="pub"><b>' + p[0] + '</b><span>' + p[1] + '</span></div>').join("");
+
+  $("langlist").innerHTML = d.langs.map(l =>
+    '<div class="lang"><b style="font-weight:600">' + l[0] + '</b><span>' + l[1] + '</span></div>').join("");
+
+  $("profile").innerHTML = d.profile.map(p => '<p>' + p + '</p>').join("");
+
+  $("jobs").innerHTML = d.jobs.map(j => {
+    let h = '<div class="job"><div class="top">' +
+      '<div class="title">' + j.title + ' · <span class="co">' + j.co + '</span></div>' +
+      '<div class="meta">' + j.meta + '</div></div>';
+    if (j.desc) h += '<div class="desc">' + j.desc + '</div>';
+    if (j.b && j.b.length) h += '<ul>' + j.b.map(x => '<li>' + x + '</li>').join("") + '</ul>';
+    if (j.v && j.v.length) {
+      h += '<div class="vent">' + j.v.map(v =>
+        '<div class="vrow"><div class="vtitle">' + v[0] + ' · <span class="co2">' + v[1] + '</span> ' +
+        '<span class="vmeta">' + v[2] + '</span></div><div class="vdesc">' + v[3] + '</div></div>').join("") + '</div>';
+    }
+    return h + '</div>';
+  }).join("");
+
+  $("foot").textContent = d.foot;
+
+  $("printBtn").innerHTML = PRINTER + '<span>' + d.ui.print + '</span>';
+  $("printBtn").setAttribute("aria-label", d.ui.print);
+
+  buildLangButtons();
+  setTheme(state.theme);
+}
+
+$("themeBtn").addEventListener("click", () => setTheme(state.theme === "light" ? "dark" : "light"));
+$("printBtn").addEventListener("click", () => window.print());
+
+render();
+</script>
+</body>
+</html>
